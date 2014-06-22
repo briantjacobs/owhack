@@ -12,11 +12,29 @@
 .size-toggle.size-5 .icon {background-image: url(../images/icons/size_scale-05.png);}
 .size-toggle.size-6 .icon {background-image: url(../images/icons/size_scale-06.png);}
 .size-toggle.size-7 .icon {background-image: url(../images/icons/size_scale-07.png);}
+.size-toggle.size-poo {display:none;}
 
 
-
-.plates-container {top: 150px; position: relative}
+.plate {margin: 40px 0;}
+.plates-container {position: relative}
 .plate .image {text-align: center}
 
 
 .back-button {display:none;}
+
+.species-item {margin-top: 45px;}
+
+.species-list > ul {padding-left: 0; list-style: none}
+
+.species-subinfo {padding-left:0; list-style: none; margin: 20px 0 20px 0;}
+.species-subinfo img {max-width: 500px}
+
+.species-subinfo .size-toggle {float:left; margin: 0 15px 15px 0}
+
+.species-subinfo li {}
+
+.img-wrap {border: 1px solid #eee; text-align:center; margin: 10px 0 10px; padding: 20px;}
+
+.title {padding: 0 15px; z-index: 10; position: relative; width: 350px;}
+.title .credit {font-size: 11px; color: #999;}
+

@@ -68,7 +68,9 @@ var PlateView = Backbone.View.extend({
         return 5;
       } else if (size < 100000) {
         return 6;
-      } 
+      } else {
+        return "poo"
+      }
     }
   },
   template: _.template($('#plate-template').html()),

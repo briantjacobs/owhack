@@ -18,8 +18,18 @@
     </head>
     <body>
 
-<div class="container">
+
+<div class="title">
+
+            <h3>Open Image</h3>
+            <p>Visualizing historical naturalist illustrations with modern-day context</p>
+            <p class="credit">By Ben Chartoff, Yvonne Leow, Sebastian Kraus, Brian Jacobs</p>
+
+</div>
+
+<div class="container-flid">
     <div class="row">
+        <div class="col-md-6">
         <div id="filter">
             <span class="size-toggle size-1" data-lo="0" data-hi="1">
                 <span class="icon"></span>
@@ -50,6 +60,7 @@
                 <label>&gt; 100m</label>
            </span>
         </div> 
+        </div>
     </div>
 </div>
 
@@ -60,30 +71,30 @@
 
 <script id="plate-template" type="text/template">
 <div class="row">
-    <div class="image col-md-8">
+    <div class="image col-md-6">
         <img src="images/medium/Tafel_<%= plate.zeroPad(plate.key, 3) %>_medium.jpg">
     </div>
-    <div class="col-md-4">
+    <div class="col-md-6">
         <button class="back-button button">main descrip</button>
 
         <div class="main-info">
             <h2><%= plate.group_name_haeckel %></h2>
-            <h3><%= plate.description %></h3>
+            <h4><%= plate.description %></h4>
         </div>
 
         <div class="species-list">
         <% _.each(plate.values, function (species) { %>
             <ul class="species-<%= species.figure_number %>" >
-                <li class="species-item" data-id="<%= species.figure_number %>"><%= (species.species || "species name") %> </li> 
-                <ul>            
+                <li class="species-item" data-id="<%= species.figure_number %>"><h4><%= (species.species || "species name") %></h4></li>
+                <ul class="species-subinfo">            
                     <li>
-                        <span class="size-toggle size-7" data-lo="100000" data-hi="1000000">
+                        <span class="size-toggle size-<%= plate.processScale(species.scale) %>" data-lo="100000" data-hi="1000000">
                             <span class="icon"></span>
-                            <label>&gt; 100m</label>
+                            <label><%= species.scale %>mm</label>
                        </span>
-                       <%= plate.processScale(species.scale) %> </li> 
+                        </li> 
                     <li><%= (species.description || "species desc") %> </li> 
-                    <li><img src="images/modern/<%= (species.modern_photo || "modern photo") %>"> </li> 
+                    <li class="img-wrap"><img src="images/modern/<%= (species.modern_photo || "modern photo") %>"> </li> 
                 </ul>
 
             </ul>
