@@ -1,1 +1,21 @@
+#filter {background: rgba(255,255,255,.7); position:fixed; z-index: 3; top: 0; left: 0; right: 0; text-align:center; padding: 30px 0 30px}
+
 .inactive {opacity:.3;}
+
+.size-toggle {display: inline-block; padding: 0 15px;}
+.size-toggle label {display:block;}
+.size-toggle .icon {width: 50px; height: 50px; display:inline-block; background-position: center center; background-size: contain; background-repeat: no-repeat;}
+.size-toggle.size-1 .icon {background-image: url(../images/icons/size_scale-01.png);}
+.size-toggle.size-2 .icon {background-image: url(../images/icons/size_scale-02.png);}
+.size-toggle.size-3 .icon {background-image: url(../images/icons/size_scale-03.png);}
+.size-toggle.size-4 .icon  {background-image: url(../images/icons/size_scale-04.png);}
+.size-toggle.size-5 .icon {background-image: url(../images/icons/size_scale-05.png);}
+.size-toggle.size-6 .icon {background-image: url(../images/icons/size_scale-06.png);}
+.size-toggle.size-7 .icon {background-image: url(../images/icons/size_scale-07.png);}
+
+
+
+.plates-container {top: 150px; position: relative}
+.plate .image {text-align: center}
+
+

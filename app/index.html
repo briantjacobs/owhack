@@ -18,19 +18,49 @@
     </head>
     <body>
 
-<div id="filter">
-    <span class="size-toggle" data-id="3">3mm</span>
-    <span class="size-toggle" data-id="6">6mm</span>
-</div> 
+<div class="container">
+    <div class="row">
+        <div id="filter">
+            <span class="size-toggle size-1" data-id="3">
+                <span class="icon"></span>
+                <label>.01mm</label>
+            </span>
+            <span class="size-toggle size-2" data-id="6">
+                <span class="icon"></span>
+                <label>.1mm</label>
+            </span>
+            <span class="size-toggle size-3" data-id="3">
+                <span class="icon"></span>
+                <label>1mm</label>
+                </span>
+            <span class="size-toggle size-4" data-id="3">
+                <span class="icon"></span>
+                <label>1cm</label>
+                </span>
+            <span class="size-toggle size-5" data-id="3">
+                <span class="icon"></span>
+                <label>1cm</label>
+                </span>
+            <span class="size-toggle size-6" data-id="3">
+                <span class="icon"></span>
+                <label>.100cm</label>
+                </span>
+            <span class="size-toggle size-7" data-id="3">
+                <span class="icon"></span>
+                <label> 1000cm</label>
+           </span>
+        </div> 
+    </div>
+</div>
 
 
-<div class="container-fluid">
+<div class="plates-container container">
     <div id="plates"></div>
 </div>
 
 <script id="plate-template" type="text/template">
 <div class="row">
-    <div class="col-md-8">
+    <div class="image col-md-8">
         <img src="images/medium/Tafel_<%= plate.zeroPad(plate.key, 3) %>_medium.jpg">
     </div>
     <div class="col-md-4">
