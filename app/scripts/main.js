@@ -2,7 +2,7 @@
 
 var app = {};
 
-
+var stickem;  
 
 _.extend(app, Backbone.Events);
 
@@ -121,6 +121,13 @@ var PlateView = Backbone.View.extend({
       _.extend(data, this.viewHelpers);
       this.$el.html( this.template({plate:data}));
 
+    //   $(window).scroll(function() {
+    //     $('.image').each(function() {
+    //       console.log(verge.inViewport( this.$el.find('.image'), -100))
+    //     });
+        
+    //   })
+    // console.log()
       //add data attributes here to the div for filtering
 
 
@@ -186,6 +193,9 @@ this.plates.fetch({
             var plateView = new PlateView({ model: plate });
             self.$el.append(plateView.render().el); // calling render method manually..
          });
+
+
+          stickem = $('.wrap').stickem();
         }
       });
 
@@ -206,12 +216,15 @@ var FilterView = Backbone.View.extend({
   initialize: function() {
   },
   filterPlates: function(e) {
-    console.log("OK")
-    $("#plates").find(".plate").removeClass("inactive").removeClass("active")
+
+    $("#plates").find(".plate").removeClass("inactive").removeClass("active").removeClass("stickem").removeClass("stickit")
     app.trigger("filter:size", {
       lo: $(e.target).closest(".size-toggle").attr("data-lo"), 
       hi:$(e.target).closest(".size-toggle").attr("data-hi") 
     });
+    stickem.destroy()
+    stickem = $('.wrap').stickem();
+
   }
 
 });

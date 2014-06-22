@@ -70,11 +70,10 @@
 </div>
 
 <script id="plate-template" type="text/template">
-<div class="row">
-    <div class="image col-md-6">
-        <img src="images/medium/Tafel_<%= plate.zeroPad(plate.key, 3) %>_medium.jpg">
-    </div>
-    <div class="col-md-6">
+<div class="wrap">
+<div class="row stickem-container">
+
+    <div class="content col-md-6">
         <button class="back-button button">main descrip</button>
 
         <div class="main-info">
@@ -102,8 +101,15 @@
         <% }); %>
         </div>
     </div>
+    <div class="image col-md-6 stickem">
+        <img src="images/medium/Tafel_<%= plate.zeroPad(plate.key, 3) %>_medium.jpg">
+    </div>
+    
+</div>
+
 </div>
 </script>
+
 
 
 
@@ -111,7 +117,7 @@
         <script src="scripts/vendor/underscore/underscore.js"></script>  
         <script src="scripts/vendor/backbone/backbone.js"></script>  
         <script src="scripts/vendor/d3/d3.js"></script>  
-         
+        <script src="scripts/vendor/verge.js"></script>  
 
 
         <!-- build:js scripts/vendor.js -->

@@ -38,3 +38,20 @@
 .title {padding: 0 15px; z-index: 10; position: relative; width: 350px;}
 .title .credit {font-size: 11px; color: #999;}
 
+
+.stickem-container {
+  position: relative;
+}
+
+.stickit {
+    margin-left: 480px;
+    margin-top: 110px;
+    position: fixed;
+    top: 0;
+}
+
+.stickit-end {
+    bottom: 40px;
+    position: absolute;
+    right: 0;
+}
