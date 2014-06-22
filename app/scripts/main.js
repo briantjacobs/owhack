@@ -7,12 +7,21 @@ var app = {};
 _.extend(app, Backbone.Events);
 
 
+
+
 var plateCollection = Backbone.Collection.extend({
     url: '/data/plates.json',
     // model: Plate,
 });
 
+var speciesModel = Backbone.Model.extend({
+  defaults: {
+    description: "DESC DESC"
+  }
+});
+
 var speciesCollection = Backbone.Collection.extend({
+    model: speciesModel,
     url: '/data/species.json',
     // model: Plate,
     parse: function(resp, xhr) {
@@ -48,6 +57,22 @@ var PlateView = Backbone.View.extend({
     }
   },
   template: _.template($('#plate-template').html()),
+
+  events: {
+    'click .species-item': "toggleSidebar",
+    'click .back-button': "toggleMain"
+  },
+
+  toggleMain: function() {
+    this.$el.find(".main-info").show();
+    this.$el.find(".back-button").hide();
+  },
+
+  toggleSidebar: function() {
+    this.$el.find(".main-info").hide();
+    this.$el.find(".back-button").show();
+
+  },
 
   initialize: function() {
     var self = this;

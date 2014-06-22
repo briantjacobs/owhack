@@ -64,14 +64,26 @@
         <img src="images/medium/Tafel_<%= plate.zeroPad(plate.key, 3) %>_medium.jpg">
     </div>
     <div class="col-md-4">
-        <h2><%= plate.group_name_haeckel %></h2>
-        <ul>
-        <% _.each(plate.values, function (species) { %>
+        <button class="back-button button">main descrip</button>
 
-          <li><%= species.species %> </li> 
+        <div class="main-info">
+            <h2><%= plate.group_name_haeckel %></h2>
+            <h3><%= plate.description %></h3>
+        </div>
+
+        <div class="species-list">
+        <% _.each(plate.values, function (species) { %>
+            <ul class="species-<%= species.figure_number %>" >
+                <li class="species-item" data-id="<%= species.figure_number %>"><%= (species.species || "species name") %> </li> 
+                <ul>            
+                    <li><%= (species.description || "species desc") %> </li> 
+                    <li><img src="images/modern/<%= (species.modern_photo || "modern photo") %>"> </li> 
+                </ul>
+
+            </ul>
 
         <% }); %>
-        </ul>
+        </div>
     </div>
 </div>
 </script>
