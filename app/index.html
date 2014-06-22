@@ -76,6 +76,12 @@
             <ul class="species-<%= species.figure_number %>" >
                 <li class="species-item" data-id="<%= species.figure_number %>"><%= (species.species || "species name") %> </li> 
                 <ul>            
+                    <li>
+                        <span class="size-toggle size-7" data-lo="100000" data-hi="1000000">
+                            <span class="icon"></span>
+                            <label>&gt; 100m</label>
+                       </span>
+                       <%= plate.processScale(species.scale) %> </li> 
                     <li><%= (species.description || "species desc") %> </li> 
                     <li><img src="images/modern/<%= (species.modern_photo || "modern photo") %>"> </li> 
                 </ul>

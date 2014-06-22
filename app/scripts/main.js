@@ -54,6 +54,21 @@ var PlateView = Backbone.View.extend({
         zeroString = '-' + zeroString;
       }
       return zeroString+n;
+    },
+    processScale: function(size) {
+      if (size < 1) {
+        return 1;
+      } else if (size < 10) {
+        return 2;
+      } else if (size < 100) {
+        return 3;
+      } else if (size < 1000) {
+        return 4;
+      } else if (size < 10000) {
+        return 5;
+      } else if (size < 100000) {
+        return 6;
+      } 
     }
   },
   template: _.template($('#plate-template').html()),
