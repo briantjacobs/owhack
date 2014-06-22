@@ -2,23 +2,34 @@
 
 var app = {};
 
+
+
 _.extend(app, Backbone.Events);
 
-var PlateCollection = Backbone.Collection.extend({
+
+var plateCollection = Backbone.Collection.extend({
+    url: '/data/plates.json',
+    // model: Plate,
+});
+
+var speciesCollection = Backbone.Collection.extend({
     url: '/data/species.json',
     // model: Plate,
     parse: function(resp, xhr) {
-      var results = resp;
-      var nest = d3.nest()
+
+        var results = resp;
+        var nest = d3.nest()
           .key(function(d) { return d.plate_number; })
           .entries(results);
-        return nest;
+        return nest;   
+
+
     },
     bySize: function(size) {
         var filtered = this.filter(function(species) {
             return species.get("scale") === size;
         });
-        return new PlateCollection(filtered);
+        return new speciesCollection(filtered);
     }
 });
 
@@ -82,7 +93,12 @@ var BookView = Backbone.View.extend({
 
   initialize: function() {
     self = this;
-    this.collection = new PlateCollection();
+
+    this.plates = new plateCollection();
+
+    this.collection = new speciesCollection();
+
+
 
     app.bind("filter:size", function(e){
       self.filterCollection(e);
@@ -111,14 +127,29 @@ var BookView = Backbone.View.extend({
 
   render: function(){
     var self = this;
-      this.collection.fetch({
-        success: function(plates) {
-          plates.each(function(plate){
-          var plateView = new PlateView({ model: plate });
-          self.$el.append(plateView.render().el); // calling render method manually..
+
+this.plates.fetch({
+  success: function(plates) {
+     self.collection.fetch({
+        success: function(speciesPlates) {
+          
+
+          speciesPlates.each(function(plate){
+                        var id = plate.get("key")
+             // console.log(id, plates.where({id: parseInt(id) }))
+             _.extend(plate.attributes, plates.findWhere({id: parseInt(id) }).toJSON());
+            console.log(plate.attributes)
+            var plateView = new PlateView({ model: plate });
+            self.$el.append(plateView.render().el); // calling render method manually..
          });
         }
       });
+
+  }
+
+})
+
+ 
       return this; // returning this for chaining..
   }
 });
