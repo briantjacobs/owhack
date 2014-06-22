@@ -48,11 +48,15 @@ var PlateView = Backbone.View.extend({
 
   filterView: function(scale) {
     var self = this;
+    var hasItem = false;
     _.each(this.model.get("values"), function(species) {
+
       if (species.scale == scale) {    
-          
-      } else {
-        this.$el.addClass("inactive")
+          hasItem = true;
+          // there is a species within the right size
+      }
+      if (hasItem === false) {
+          self.$el.addClass("inactive");
       }
     });
   },
