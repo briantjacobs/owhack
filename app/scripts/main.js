@@ -50,8 +50,10 @@ var PlateView = Backbone.View.extend({
     var self = this;
     _.each(this.model.get("values"), function(species) {
       if (species.scale == scale) {    
-          console.log(self, species);
-        }
+          
+      } else {
+        this.$el.addClass("inactive")
+      }
     });
   },
 
