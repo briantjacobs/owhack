@@ -61,15 +61,17 @@ var PlateView = Backbone.View.extend({
     var self = this;
     var hasItem = false;
     _.each(this.model.get("values"), function(species) {
-
-      if (species.scale == scale) {    
+      if (!_.isNull(species.scale) && species.scale > scale.lo && species.scale < scale.hi) {    
           hasItem = true;
           // there is a species within the right size
       }
-      if (hasItem === false) {
-          self.$el.addClass("inactive");
-      }
     });
+      if (hasItem === false) {
+        self.$el.addClass("inactive");
+      } else if (hasItem === true) {
+        self.$el.addClass("active");
+      }
+
   },
 
   render: function(){
@@ -135,10 +137,10 @@ this.plates.fetch({
           
 
           speciesPlates.each(function(plate){
-                        var id = plate.get("key")
-             // console.log(id, plates.where({id: parseInt(id) }))
+            var id = plate.get("key")
+
              _.extend(plate.attributes, plates.findWhere({id: parseInt(id) }).toJSON());
-            console.log(plate.attributes)
+
             var plateView = new PlateView({ model: plate });
             self.$el.append(plateView.render().el); // calling render method manually..
          });
@@ -162,7 +164,12 @@ var FilterView = Backbone.View.extend({
   initialize: function() {
   },
   filterPlates: function(e) {
-    app.trigger("filter:size", $(e.target).attr("data-id"))
+    console.log("OK")
+    $("#plates").find(".plate").removeClass("inactive").removeClass("active")
+    app.trigger("filter:size", {
+      lo: $(e.target).closest(".size-toggle").attr("data-lo"), 
+      hi:$(e.target).closest(".size-toggle").attr("data-hi") 
+    });
   }
 
 });
