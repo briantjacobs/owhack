@@ -52,7 +52,7 @@ var PlateView = Backbone.View.extend({
       if (species.scale == scale) {    
           console.log(self, species);
         }
-    })
+    });
   },
 
   render: function(){
